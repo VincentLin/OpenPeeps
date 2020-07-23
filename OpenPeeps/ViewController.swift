@@ -10,11 +10,31 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var headImageView: UIImageView!
+    @IBOutlet weak var faceImageView: UIImageView!
+    @IBOutlet var elementScrollView: [UIScrollView]!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func elementSelected(_ sender: UISegmentedControl) {
+        elementScrollView.forEach {
+               $0.isHidden = true
+            }
+        elementScrollView[sender.selectedSegmentIndex].isHidden = false
+    }
+    
+    @IBAction func headPressed(_ sender: UIButton) {
+        headImageView.image = sender.currentBackgroundImage
+    }
+    
+    @IBAction func facePressed(_ sender: UIButton) {
+        faceImageView.image = sender.currentBackgroundImage
+    }
 }
 
